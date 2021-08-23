@@ -183,9 +183,9 @@
     <category term="Machine Learning" scheme="https://allmainashley.github.io/categories/Notes/Machine-Learning/"/>
     
     
-    <category term="Dataset Analysis" scheme="https://allmainashley.github.io/tags/Dataset-Analysis/"/>
-    
     <category term="NLP" scheme="https://allmainashley.github.io/tags/NLP/"/>
+    
+    <category term="Dataset Analysis" scheme="https://allmainashley.github.io/tags/Dataset-Analysis/"/>
     
   </entry>
   
@@ -209,9 +209,9 @@
     <category term="Machine Learning" scheme="https://allmainashley.github.io/categories/Notes/Machine-Learning/"/>
     
     
-    <category term="NLP" scheme="https://allmainashley.github.io/tags/NLP/"/>
-    
     <category term="MxNet" scheme="https://allmainashley.github.io/tags/MxNet/"/>
+    
+    <category term="NLP" scheme="https://allmainashley.github.io/tags/NLP/"/>
     
     <category term="Colab" scheme="https://allmainashley.github.io/tags/Colab/"/>
     
