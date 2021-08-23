@@ -6,7 +6,7 @@
   <link href="https://allmainashley.github.io/atom.xml" rel="self"/>
   
   <link href="https://allmainashley.github.io/"/>
-  <updated>2021-07-15T02:44:44.088Z</updated>
+  <updated>2021-08-23T04:47:46.351Z</updated>
   <id>https://allmainashley.github.io/</id>
   
   <author>
@@ -17,13 +17,62 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Github port 443 timeout (🤡 version)</title>
+    <link href="https://allmainashley.github.io/2021/08/23/Debug/Github-port-443-error/"/>
+    <id>https://allmainashley.github.io/2021/08/23/Debug/Github-port-443-error/</id>
+    <published>2021-08-23T02:32:08.899Z</published>
+    <updated>2021-08-23T04:47:46.351Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><blockquote><p>从国内访问Github往往会遇到许多问题。本文则是一篇汇总，参考资料来源于网上。</p></blockquote><h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><ol><li>网速过慢但能够被加载 ⏩ 服务器或 CDN 节点的地理位置相对较远</li><li>无法加载 ⏩ 长时间未响应 or 被ban了</li><li>无法通讯 ⏩ IP解析错误，即DNS污染；否则为IP服务器内部出现了错误</li></ol><blockquote><p><font color=LightSeaGreen><strong>DNS污染</strong></font></p><p>使一般用户由于得到【虚假目标主机IP】而无法与【原目标主机IP】通信的方法，是一种DNS缓存投毒攻击（DNS cache poisoning）。国内服务器伪装成DNS服务器向用户发回错误的地址。</p><p><font color=LightSeaGreen><strong>DNS劫持</strong></font></p><p>【网络运营商】通过某种手段获取域名的【解析记录控制权】，进而修改【域名解析结果】，导致对该域名的访问由【原IP】转变为修改后的【指定IP】。</p></blockquote><h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><p>找到网站的真实地址，并将其放入到Hosts文件中。</p><ol><li><p>进入 <a href="https://www.ipaddress.com/">IP address网站</a></p></li><li><p>输入 <code>raw.github.com</code>，得到真实的IP地址 ⚠我试了一下，显示404 <code>:D</code></p></li><li><p>将该真实IP地址写入Hosts文件，这样就可以在访问的时候不经过DNS解析 </p></li><li><p>进入<a href="https://gitee.com/jyotish/githubhosts"> githubhosts</a>，复制<code>hosts 文件内关于 github IP 地址的内容</code>下面的一长串，再照着接下来的操作</p></li><li><p>显示无法保存，属性 ⏩ 安全 ⏩ 选择Users ⏩ 编辑 ⏩ 将user用户设置为完全控制</p></li><li><p>进入cmd: <code>ipconfig /flushdns</code></p></li><li><p>实测：没有用 </p></li></ol><h1 id="最终处理方案"><a href="#最终处理方案" class="headerlink" title="最终处理方案"></a>最终处理方案</h1><p>只对Github挂全局代理：【可行】</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.https:&#x2F;&#x2F;github.com.proxy socks5:&#x2F;&#x2F;127.0.0.1:1080</span><br><span class="line">git config --global https.https:&#x2F;&#x2F;github.com.proxy socks5:&#x2F;&#x2F;127.0.0.1:1080</span><br></pre></td></tr></table></figure><p>删除代理：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global --unset http.proxy</span><br><span class="line">git config --global --unset https.proxy</span><br></pre></td></tr></table></figure><h1 id="问题-1"><a href="#问题-1" class="headerlink" title="问题"></a>问题</h1><ol><li>为什么改hosts文件不管用了？</li><li>为什么用命令挂全局代理又可以用了？</li></ol><h1 id="出大事了"><a href="#出大事了" class="headerlink" title="出大事了"></a>出大事了</h1><p>在我【停止使用科学上网的小工具】，【删除代理】的时候，git clone竟然也可以把项目clone下来。怎么刚刚就不可以呢？😡</p><p>现在测试过后发现，【是否在科学上网小工具上挂全局代理】，【是否用命令行挂全局代理】（尚未知命令行和小工具挂全局代理的区别），【是否删除代理】，都可以用<code>git clone https://github.com/.../.../XXX.git</code>clone项目了。</p><p>总结：有网就行。</p><img src="https://cdn.jsdelivr.net/gh/AllMainAshley/CDN@master/images/20210823124113.jpg"  loading="lazy"><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>仓促结束，想来是GitHub抽风了，白耽搁我这么长时间🤡</p><p><img src="https://cdn.jsdelivr.net/gh/AllMainAshley/CDN@master/images/20210823124555.jpg" loading="lazy"></p><h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><blockquote><ol><li><a href="https://zhuanlan.zhihu.com/p/107334179">修改 Hosts 解决 Github 访问失败马克</a></li><li><a href="https://www.williamlong.info/archives/3356.html">DNS劫持和DNS污染的区别</a></li><li><a href="https://youtu.be/0lKoXWPoUB0">解决无法访问Github网站的问题</a></li><li><a href="https://gitee.com/jyotish/githubhosts"> hosts 文件内关于 github IP 地址的内容</a></li><li><a href="https://blog.csdn.net/czjlghndcy/article/details/102874032?utm_medium=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromMachineLearnPai2~default-2.control&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromMachineLearnPai2~default-2.control">git 设置代理</a> 💗</li></ol></blockquote>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;从国内访问Github往往会遇到许多问题。本文则是一篇汇总，参考资料来源于网上。&lt;/p&gt;
+&lt;/blockquote</summary>
+      
+    
+    
+    
+    <category term="Debug" scheme="https://allmainashley.github.io/categories/Debug/"/>
+    
+    
+    <category term="Github" scheme="https://allmainashley.github.io/tags/Github/"/>
+    
+    <category term="433 timeout" scheme="https://allmainashley.github.io/tags/433-timeout/"/>
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://allmainashley.github.io/2021/07/22/Notes/Machine%20Learning/Pytorch%20Learning%20Notes/"/>
+    <id>https://allmainashley.github.io/2021/07/22/Notes/Machine%20Learning/Pytorch%20Learning%20Notes/</id>
+    <published>2021-07-22T01:25:25.781Z</published>
+    <updated>2021-07-22T01:25:25.781Z</updated>
+    
+    <content type="html"><![CDATA[<hr><h2 id="Pytorch-学习笔记"><a href="#Pytorch-学习笔记" class="headerlink" title="Pytorch 学习笔记"></a>Pytorch 学习笔记</h2>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;hr&gt;
+&lt;h2 id=&quot;Pytorch-学习笔记&quot;&gt;&lt;a href=&quot;#Pytorch-学习笔记&quot; class=&quot;headerlink&quot; title=&quot;Pytorch 学习笔记&quot;&gt;&lt;/a&gt;Pytorch 学习笔记&lt;/h2&gt;</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>Commonly Used Tools</title>
     <link href="https://allmainashley.github.io/2021/07/14/Notes/Utils/Commonly-Used-Tools/"/>
     <id>https://allmainashley.github.io/2021/07/14/Notes/Utils/Commonly-Used-Tools/</id>
     <published>2021-07-13T23:19:58.802Z</published>
-    <updated>2021-07-15T02:44:44.088Z</updated>
+    <updated>2021-08-08T07:22:45.711Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="Websites"><a href="#Websites" class="headerlink" title="Websites"></a>Websites</h1><h2 id="常用英英词典："><a href="#常用英英词典：" class="headerlink" title="常用英英词典："></a>常用英英词典：</h2><p><a href="https://www.urbandictionary.com/">https://www.urbandictionary.com/</a><br><a href="https://www.thefreedictionary.com/">https://www.thefreedictionary.com/</a><br><a href="https://www.merriam-webster.com/">https://www.merriam-webster.com/</a><br><a href="https://www.collinsdictionary.com/dictionary/english">https://www.collinsdictionary.com/dictionary/english</a><br><a href="https://dictionary.cambridge.org/">https://dictionary.cambridge.org/</a><br><a href="https://www.ldoceonline.com/">https://www.ldoceonline.com/</a></p><h2 id="用法数据库："><a href="#用法数据库：" class="headerlink" title="用法数据库："></a>用法数据库：</h2><p><a href="https://ludwig.guru/">https://ludwig.guru/</a><br><a href="https://cn.linguee.com/">https://cn.linguee.com/</a><br><a href="https://books.google.com/ngrams">https://books.google.com/ngrams</a></p><h2 id="电影美剧及字幕下载："><a href="#电影美剧及字幕下载：" class="headerlink" title="电影美剧及字幕下载："></a>电影美剧及字幕下载：</h2><p><a href="https://1337x.to/home/">https://1337x.to/home/</a><br><a href="https://www.magnetdl.com/">https://www.magnetdl.com/</a><br><a href="https://www.meijutt.tv/">https://www.meijutt.tv/</a><br><a href="https://yts.ag/">https://yts.ag/</a><br><a href="https://pahe.in/">https://pahe.in/</a><br><a href="https://subscene.com/subtitles/searchbytitle">https://subscene.com/subtitles/searchbytitle</a><br><a href="https://yanghuanyu.com/">https://yanghuanyu.com/</a> 皮皮虾</p><h2 id="电子书下载："><a href="#电子书下载：" class="headerlink" title="电子书下载："></a>电子书下载：</h2><p><a href="http://libgen.li/">http://libgen.li/</a><br><a href="https://www.owleyes.org/">https://www.owleyes.org/</a><br><a href="http://shu.ziyuandi.cn/">http://shu.ziyuandi.cn/</a><br><a href="https://1lib.us/">https://1lib.us/</a> (z-library)<br><a href="https://emagazines.site/te_2020">https://emagazines.site/te_2020</a> 经济学人，纽约客下载</p><h2 id="博客类"><a href="#博客类" class="headerlink" title="博客类:"></a>博客类:</h2><p><a href="https://www.tjxz.cc/">https://www.tjxz.cc/</a> 田间小站<br><a href="https://ieltsrewind.com/">https://ieltsrewind.com/</a> 雅思复盘考题<br><a href="https://www.ieltsday.com/">https://www.ieltsday.com/</a> 开源雅思<br><a href="http://www.ai-start.com/">http://www.ai-start.com/</a> 机器学习(致力于人工智能（AI）方面的课程的翻译、笔记分享等)<br><a href="http://www.huaxiaozhuan.com/">http://www.huaxiaozhuan.com/</a> AI算法工程师手册<br><a href="http://www.ruanyifeng.com/home.html">http://www.ruanyifeng.com/home.html</a> 阮一峰</p><h1 id="Tricks"><a href="#Tricks" class="headerlink" title="Tricks"></a>Tricks</h1><h2 id="ffmpeg"><a href="#ffmpeg" class="headerlink" title="ffmpeg"></a>ffmpeg</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;d E:&#x2F;ffmpeg&#x2F;bin</span><br><span class="line">声音视频合并</span><br><span class="line">ffmpeg -i video.m4s -i audio.m4s -c:v copy -strict experimental vedio.mp4</span><br><span class="line">多个视频文件合并</span><br><span class="line">ffmpeg -i &quot;concat:1.mp4|2.mp4|3.mp4|4.mp4|5.mp4|6.mp4|7.mp4|8.mp4|9.mp4|10.mp4&quot; -c copy Output.mp4</span><br><span class="line">转码成h.264</span><br><span class="line">ffmpeg -i input.mp4 -c:v libx264 output.mp4</span><br></pre></td></tr></table></figure><h2 id="快捷键-HotKey"><a href="#快捷键-HotKey" class="headerlink" title="快捷键 HotKey"></a>快捷键 HotKey</h2><p><a href="https://www.cnblogs.com/hongdada/p/9776547.html">https://www.cnblogs.com/hongdada/p/9776547.html</a> Typora快捷键</p><h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p><a href="https://www.processon.com/diagrams">https://www.processon.com/diagrams</a> 思维导图<br><a href="https://www.geogebra.org/3d?lang=zh_CN">https://www.geogebra.org/3d?lang=zh_CN</a> 3D计算器</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="Websites"><a href="#Websites" class="headerlink" title="Websites"></a>Websites</h1><h2 id="常用英英词典："><a href="#常用英英词典：" class="headerlink" title="常用英英词典："></a>常用英英词典：</h2><p><a href="https://www.urbandictionary.com/">https://www.urbandictionary.com/</a><br><a href="https://www.thefreedictionary.com/">https://www.thefreedictionary.com/</a><br><a href="https://www.merriam-webster.com/">https://www.merriam-webster.com/</a><br><a href="https://www.collinsdictionary.com/dictionary/english">https://www.collinsdictionary.com/dictionary/english</a><br><a href="https://dictionary.cambridge.org/">https://dictionary.cambridge.org/</a><br><a href="https://www.ldoceonline.com/">https://www.ldoceonline.com/</a></p><h2 id="用法数据库："><a href="#用法数据库：" class="headerlink" title="用法数据库："></a>用法数据库：</h2><p><a href="https://ludwig.guru/">https://ludwig.guru/</a><br><a href="https://cn.linguee.com/">https://cn.linguee.com/</a><br><a href="https://books.google.com/ngrams">https://books.google.com/ngrams</a></p><h2 id="电影美剧及字幕下载："><a href="#电影美剧及字幕下载：" class="headerlink" title="电影美剧及字幕下载："></a>电影美剧及字幕下载：</h2><p><a href="https://1337x.to/home/">https://1337x.to/home/</a><br><a href="https://www.magnetdl.com/">https://www.magnetdl.com/</a><br><a href="https://www.meijutt.tv/">https://www.meijutt.tv/</a><br><a href="https://yts.ag/">https://yts.ag/</a><br><a href="https://pahe.in/">https://pahe.in/</a><br><a href="https://subscene.com/subtitles/searchbytitle">https://subscene.com/subtitles/searchbytitle</a><br><a href="https://yanghuanyu.com/">https://yanghuanyu.com/</a> 皮皮虾</p><h2 id="电子书下载："><a href="#电子书下载：" class="headerlink" title="电子书下载："></a>电子书下载：</h2><p><a href="http://libgen.li/">http://libgen.li/</a><br><a href="https://www.owleyes.org/">https://www.owleyes.org/</a><br><a href="http://shu.ziyuandi.cn/">http://shu.ziyuandi.cn/</a><br><a href="https://1lib.us/">https://1lib.us/</a> (z-library)<br><a href="https://emagazines.site/te_2020">https://emagazines.site/te_2020</a> 经济学人，纽约客下载</p><h2 id="博客类"><a href="#博客类" class="headerlink" title="博客类:"></a>博客类:</h2><p><a href="https://www.tjxz.cc/">https://www.tjxz.cc/</a> 田间小站<br><a href="https://ieltsrewind.com/">https://ieltsrewind.com/</a> 雅思复盘考题<br><a href="https://www.ieltsday.com/">https://www.ieltsday.com/</a> 开源雅思<br><a href="http://www.ai-start.com/">http://www.ai-start.com/</a> 机器学习(致力于人工智能（AI）方面的课程的翻译、笔记分享等)<br><a href="http://www.huaxiaozhuan.com/">http://www.huaxiaozhuan.com/</a> AI算法工程师手册<br><a href="http://www.ruanyifeng.com/home.html">http://www.ruanyifeng.com/home.html</a> 阮一峰</p><h1 id="Tricks"><a href="#Tricks" class="headerlink" title="Tricks"></a>Tricks</h1><h2 id="ffmpeg"><a href="#ffmpeg" class="headerlink" title="ffmpeg"></a>ffmpeg</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;d E:&#x2F;ffmpeg&#x2F;bin</span><br><span class="line">声音视频合并</span><br><span class="line">ffmpeg -i video.m4s -i audio.m4s -c:v copy -strict experimental vedio.mp4</span><br><span class="line">多个视频文件合并</span><br><span class="line">ffmpeg -i &quot;concat:1.mp4|2.mp4|3.mp4|4.mp4|5.mp4|6.mp4|7.mp4|8.mp4|9.mp4|10.mp4&quot; -c copy Output.mp4</span><br><span class="line">转码成h.264</span><br><span class="line">ffmpeg -i input.mp4 -c:v libx264 output.mp4</span><br></pre></td></tr></table></figure><h2 id="快捷键-HotKey"><a href="#快捷键-HotKey" class="headerlink" title="快捷键 HotKey"></a>快捷键 HotKey</h2><p><a href="https://www.cnblogs.com/hongdada/p/9776547.html">https://www.cnblogs.com/hongdada/p/9776547.html</a> Typora快捷键</p><h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p><a href="https://www.processon.com/diagrams">https://www.processon.com/diagrams</a> 思维导图<br><a href="https://www.geogebra.org/3d?lang=zh_CN">https://www.geogebra.org/3d?lang=zh_CN</a> 3D计算器</p><p><a href="https://whoer.net/">https://whoer.net/</a> 检查浏览器指纹是否泄漏<br><a href="https://browserleaks.com/ip">https://browserleaks.com/ip</a> 检查ip是否泄漏</p>]]></content>
     
     
       
@@ -160,9 +209,9 @@
     <category term="Machine Learning" scheme="https://allmainashley.github.io/categories/Notes/Machine-Learning/"/>
     
     
-    <category term="NLP" scheme="https://allmainashley.github.io/tags/NLP/"/>
-    
     <category term="Dataset Analysis" scheme="https://allmainashley.github.io/tags/Dataset-Analysis/"/>
+    
+    <category term="NLP" scheme="https://allmainashley.github.io/tags/NLP/"/>
     
   </entry>
   
@@ -186,9 +235,9 @@
     <category term="Machine Learning" scheme="https://allmainashley.github.io/categories/Notes/Machine-Learning/"/>
     
     
-    <category term="MxNet" scheme="https://allmainashley.github.io/tags/MxNet/"/>
-    
     <category term="NLP" scheme="https://allmainashley.github.io/tags/NLP/"/>
+    
+    <category term="MxNet" scheme="https://allmainashley.github.io/tags/MxNet/"/>
     
     <category term="Colab" scheme="https://allmainashley.github.io/tags/Colab/"/>
     
@@ -492,63 +541,6 @@
     <category term="The Missing Semester of Your CS Education" scheme="https://allmainashley.github.io/tags/The-Missing-Semester-of-Your-CS-Education/"/>
     
     <category term="Shell" scheme="https://allmainashley.github.io/tags/Shell/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Qv2ray 配置</title>
-    <link href="https://allmainashley.github.io/2020/09/30/Notes/Linux/Qv2ray%20Configuration/"/>
-    <id>https://allmainashley.github.io/2020/09/30/Notes/Linux/Qv2ray%20Configuration/</id>
-    <published>2020-09-29T16:15:52.963Z</published>
-    <updated>2020-09-03T05:14:16.250Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="（一）Qv2ray及v2ray的下载"><a href="#（一）Qv2ray及v2ray的下载" class="headerlink" title="（一）Qv2ray及v2ray的下载"></a>（一）Qv2ray及v2ray的下载</h2><p><img src="https://img-blog.csdnimg.cn/20200425214501515.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0ODE1NTcz,size_16,color_FFFFFF,t_70#pic_center" loading="lazy"></p><p><img src="https://img-blog.csdnimg.cn/20200425215012751.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0ODE1NTcz,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述" loading="lazy"></p><h2 id="（二）安装Qv2ray"><a href="#（二）安装Qv2ray" class="headerlink" title="（二）安装Qv2ray"></a>（二）安装Qv2ray</h2><p><a href="https://blog.csdn.net/yucicheung/article/details/79333056">安装Qv2ray.deb的方法</a></p><p>安装完了之后打开运行，运行方法：点击首选项<br><img src="https://img-blog.csdnimg.cn/20200425222453620.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0ODE1NTcz,size_16,color_FFFFFF,t_70#pic_center" loading="lazy"><br><strong>（语言选择zh-CN，上面不小心写错了）</strong><br>再点击订阅：</p><p><img src="https://img-blog.csdnimg.cn/2020042522304470.png" alt="在这里插入图片描述" loading="lazy"><br>点击左下角加号，并双击，填写订阅名称及订阅地址：<img src="https://img-blog.csdnimg.cn/20200425223405374.png#pic_center" alt="在这里插入图片描述" loading="lazy"><br>配置完成！</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;（一）Qv2ray及v2ray的下载&quot;&gt;&lt;a href=&quot;#（一）Qv2ray及v2ray的下载&quot; class=&quot;headerlink&quot; title=&quot;（一）Qv2ray及v2ray的下载&quot;&gt;&lt;/a&gt;（一）Qv2ray及v2ray的下载&lt;/h2&gt;&lt;p&gt;&lt;img s</summary>
-      
-    
-    
-    
-    <category term="Notes" scheme="https://allmainashley.github.io/categories/Notes/"/>
-    
-    <category term="Linux" scheme="https://allmainashley.github.io/categories/Notes/Linux/"/>
-    
-    
-    <category term="Qv2ray" scheme="https://allmainashley.github.io/tags/Qv2ray/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Matplotlib、Pandas常用函数</title>
-    <link href="https://allmainashley.github.io/2019/04/28/Notes/Machine%20Learning/Data%20Preprocessing%20by%20Matplotlib%20and%20Pandas/"/>
-    <id>https://allmainashley.github.io/2019/04/28/Notes/Machine%20Learning/Data%20Preprocessing%20by%20Matplotlib%20and%20Pandas/</id>
-    <published>2019-04-28T07:48:00.000Z</published>
-    <updated>2019-05-06T13:32:00.000Z</updated>
-    
-    <content type="html"><![CDATA[<a id="more"></a><h1 id="Matplotlib"><a href="#Matplotlib" class="headerlink" title="Matplotlib"></a>Matplotlib</h1><ul><li><p><a href="https://blog.csdn.net/Jinlong_Xu/article/details/70175107">plot kind参数表</a></p><table><thead><tr><th align="left">参数</th><th align="left">说明</th></tr></thead><tbody><tr><td align="left">label</td><td align="left">用于图例的标签</td></tr><tr><td align="left">ax</td><td align="left">要在其上进行绘制的matplotlib subplot对象。如果没有设置，则使用当前matplotlib subplot</td></tr><tr><td align="left">style</td><td align="left">将要传给matplotlib的风格字符串(for example: ‘ko–’)</td></tr><tr><td align="left">alpha</td><td align="left">图表的填充不透明(0-1)</td></tr><tr><td align="left">kind</td><td align="left">可以是’line’, ‘bar’, ‘barh’, ‘kde’</td></tr><tr><td align="left">logy</td><td align="left">在Y轴上使用对数标尺</td></tr><tr><td align="left">use_index</td><td align="left">将对象的索引用作刻度标签</td></tr><tr><td align="left">rot</td><td align="left">旋转刻度标签(0-360)</td></tr><tr><td align="left">xticks</td><td align="left">用作X轴刻度的值</td></tr><tr><td align="left">yticks</td><td align="left">用作Y轴刻度的值</td></tr><tr><td align="left">xlim</td><td align="left">X轴的界限</td></tr><tr><td align="left">ylim</td><td align="left">Y轴的界限</td></tr><tr><td align="left">grid</td><td align="left">显示轴网格线</td></tr></tbody></table></li><li><p><a href="https://blog.csdn.net/changzoe/article/details/78845756">subplot2grid()</a></p></li><li><p><a href="https://blog.csdn.net/GAN_player/article/details/78543643">调整子图间距</a></p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fig.tight_layout()<span class="comment">#调整整体空白    </span></span><br><span class="line">plt.subplots_adjust(wspace =<span class="number">0</span>, hspace =<span class="number">0</span>)<span class="comment">#调整子图间距</span></span><br></pre></td></tr></table></figure></li></ul><h1 id="Pandas"><a href="#Pandas" class="headerlink" title="Pandas"></a>Pandas</h1><ul><li><p>value_counts()：对Series里的所有值进行计数并且从大到小排序。</p></li><li><p><a href="https://blog.csdn.net/ARPOSPF/article/details/80407370">tsv文件和csv文件的区别</a></p><p><code>tsv</code>文件以tab制表符分隔，而<code>csv</code>文件以comma分隔。</p></li></ul><hr><p>Test</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-
-&lt;h1 id=&quot;Matplotlib&quot;&gt;&lt;a href=&quot;#Matplotlib&quot; class=&quot;headerlink&quot; title=&quot;Matplotlib&quot;&gt;&lt;/a&gt;Matplotlib&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;h</summary>
-      
-    
-    
-    
-    <category term="Notes" scheme="https://allmainashley.github.io/categories/Notes/"/>
-    
-    
-    <category term="Tips" scheme="https://allmainashley.github.io/tags/Tips/"/>
-    
-    <category term="Matplotlib" scheme="https://allmainashley.github.io/tags/Matplotlib/"/>
-    
-    <category term="Pandas" scheme="https://allmainashley.github.io/tags/Pandas/"/>
     
   </entry>
   
