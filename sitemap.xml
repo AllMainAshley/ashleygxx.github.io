@@ -9,13 +9,6 @@
   </url>
   
   <url>
-    <loc>https://allmainashley.github.io/2021/07/14/Notes/Utils/Commonly-Used-Tools/</loc>
-    
-    <lastmod>2021-08-08</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://allmainashley.github.io/2021/07/22/Notes/Machine%20Learning/Pytorch%20Learning%20Notes/</loc>
     
     <lastmod>2021-07-22</lastmod>
@@ -277,20 +270,6 @@
   </url>
   
   <url>
-    <loc>https://allmainashley.github.io/tags/The-Missing-Semester-of-Your-CS-Education/</loc>
-    <lastmod>2021-08-23</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://allmainashley.github.io/tags/Shell/</loc>
-    <lastmod>2021-08-23</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://allmainashley.github.io/tags/Dataset-Analysis/</loc>
     <lastmod>2021-08-23</lastmod>
     <changefreq>daily</changefreq>
@@ -299,6 +278,20 @@
   
   <url>
     <loc>https://allmainashley.github.io/tags/NLP/</loc>
+    <lastmod>2021-08-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://allmainashley.github.io/tags/The-Missing-Semester-of-Your-CS-Education/</loc>
+    <lastmod>2021-08-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://allmainashley.github.io/tags/Shell/</loc>
     <lastmod>2021-08-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -340,6 +333,13 @@
   </url>
   
   <url>
+    <loc>https://allmainashley.github.io/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</loc>
+    <lastmod>2021-08-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://allmainashley.github.io/tags/Statistics/</loc>
     <lastmod>2021-08-23</lastmod>
     <changefreq>daily</changefreq>
@@ -354,13 +354,6 @@
   </url>
   
   <url>
-    <loc>https://allmainashley.github.io/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</loc>
-    <lastmod>2021-08-23</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://allmainashley.github.io/tags/Octave/</loc>
     <lastmod>2021-08-23</lastmod>
     <changefreq>daily</changefreq>
@@ -369,13 +362,6 @@
   
   <url>
     <loc>https://allmainashley.github.io/tags/OpenCV/</loc>
-    <lastmod>2021-08-23</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://allmainashley.github.io/tags/Tools/</loc>
     <lastmod>2021-08-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -448,13 +434,6 @@
   
   <url>
     <loc>https://allmainashley.github.io/categories/Notes/OpenCV/</loc>
-    <lastmod>2021-08-23</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://allmainashley.github.io/categories/Notes/Utils/</loc>
     <lastmod>2021-08-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>

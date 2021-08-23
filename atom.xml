@@ -66,32 +66,6 @@
   </entry>
   
   <entry>
-    <title>Commonly Used Tools</title>
-    <link href="https://allmainashley.github.io/2021/07/14/Notes/Utils/Commonly-Used-Tools/"/>
-    <id>https://allmainashley.github.io/2021/07/14/Notes/Utils/Commonly-Used-Tools/</id>
-    <published>2021-07-13T23:19:58.802Z</published>
-    <updated>2021-08-08T07:22:45.711Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Websites"><a href="#Websites" class="headerlink" title="Websites"></a>Websites</h1><h2 id="常用英英词典："><a href="#常用英英词典：" class="headerlink" title="常用英英词典："></a>常用英英词典：</h2><p><a href="https://www.urbandictionary.com/">https://www.urbandictionary.com/</a><br><a href="https://www.thefreedictionary.com/">https://www.thefreedictionary.com/</a><br><a href="https://www.merriam-webster.com/">https://www.merriam-webster.com/</a><br><a href="https://www.collinsdictionary.com/dictionary/english">https://www.collinsdictionary.com/dictionary/english</a><br><a href="https://dictionary.cambridge.org/">https://dictionary.cambridge.org/</a><br><a href="https://www.ldoceonline.com/">https://www.ldoceonline.com/</a></p><h2 id="用法数据库："><a href="#用法数据库：" class="headerlink" title="用法数据库："></a>用法数据库：</h2><p><a href="https://ludwig.guru/">https://ludwig.guru/</a><br><a href="https://cn.linguee.com/">https://cn.linguee.com/</a><br><a href="https://books.google.com/ngrams">https://books.google.com/ngrams</a></p><h2 id="电影美剧及字幕下载："><a href="#电影美剧及字幕下载：" class="headerlink" title="电影美剧及字幕下载："></a>电影美剧及字幕下载：</h2><p><a href="https://1337x.to/home/">https://1337x.to/home/</a><br><a href="https://www.magnetdl.com/">https://www.magnetdl.com/</a><br><a href="https://www.meijutt.tv/">https://www.meijutt.tv/</a><br><a href="https://yts.ag/">https://yts.ag/</a><br><a href="https://pahe.in/">https://pahe.in/</a><br><a href="https://subscene.com/subtitles/searchbytitle">https://subscene.com/subtitles/searchbytitle</a><br><a href="https://yanghuanyu.com/">https://yanghuanyu.com/</a> 皮皮虾</p><h2 id="电子书下载："><a href="#电子书下载：" class="headerlink" title="电子书下载："></a>电子书下载：</h2><p><a href="http://libgen.li/">http://libgen.li/</a><br><a href="https://www.owleyes.org/">https://www.owleyes.org/</a><br><a href="http://shu.ziyuandi.cn/">http://shu.ziyuandi.cn/</a><br><a href="https://1lib.us/">https://1lib.us/</a> (z-library)<br><a href="https://emagazines.site/te_2020">https://emagazines.site/te_2020</a> 经济学人，纽约客下载</p><h2 id="博客类"><a href="#博客类" class="headerlink" title="博客类:"></a>博客类:</h2><p><a href="https://www.tjxz.cc/">https://www.tjxz.cc/</a> 田间小站<br><a href="https://ieltsrewind.com/">https://ieltsrewind.com/</a> 雅思复盘考题<br><a href="https://www.ieltsday.com/">https://www.ieltsday.com/</a> 开源雅思<br><a href="http://www.ai-start.com/">http://www.ai-start.com/</a> 机器学习(致力于人工智能（AI）方面的课程的翻译、笔记分享等)<br><a href="http://www.huaxiaozhuan.com/">http://www.huaxiaozhuan.com/</a> AI算法工程师手册<br><a href="http://www.ruanyifeng.com/home.html">http://www.ruanyifeng.com/home.html</a> 阮一峰</p><h1 id="Tricks"><a href="#Tricks" class="headerlink" title="Tricks"></a>Tricks</h1><h2 id="ffmpeg"><a href="#ffmpeg" class="headerlink" title="ffmpeg"></a>ffmpeg</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;d E:&#x2F;ffmpeg&#x2F;bin</span><br><span class="line">声音视频合并</span><br><span class="line">ffmpeg -i video.m4s -i audio.m4s -c:v copy -strict experimental vedio.mp4</span><br><span class="line">多个视频文件合并</span><br><span class="line">ffmpeg -i &quot;concat:1.mp4|2.mp4|3.mp4|4.mp4|5.mp4|6.mp4|7.mp4|8.mp4|9.mp4|10.mp4&quot; -c copy Output.mp4</span><br><span class="line">转码成h.264</span><br><span class="line">ffmpeg -i input.mp4 -c:v libx264 output.mp4</span><br></pre></td></tr></table></figure><h2 id="快捷键-HotKey"><a href="#快捷键-HotKey" class="headerlink" title="快捷键 HotKey"></a>快捷键 HotKey</h2><p><a href="https://www.cnblogs.com/hongdada/p/9776547.html">https://www.cnblogs.com/hongdada/p/9776547.html</a> Typora快捷键</p><h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p><a href="https://www.processon.com/diagrams">https://www.processon.com/diagrams</a> 思维导图<br><a href="https://www.geogebra.org/3d?lang=zh_CN">https://www.geogebra.org/3d?lang=zh_CN</a> 3D计算器</p><p><a href="https://whoer.net/">https://whoer.net/</a> 检查浏览器指纹是否泄漏<br><a href="https://browserleaks.com/ip">https://browserleaks.com/ip</a> 检查ip是否泄漏</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;Websites&quot;&gt;&lt;a href=&quot;#Websites&quot; class=&quot;headerlink&quot; title=&quot;Websites&quot;&gt;&lt;/a&gt;Websites&lt;/h1&gt;&lt;h2 id=&quot;常用英英词典：&quot;&gt;&lt;a href=&quot;#常用英英词典：&quot; class=&quot;header</summary>
-      
-    
-    
-    
-    <category term="Notes" scheme="https://allmainashley.github.io/categories/Notes/"/>
-    
-    <category term="Utils" scheme="https://allmainashley.github.io/categories/Notes/Utils/"/>
-    
-    
-    <category term="Tools" scheme="https://allmainashley.github.io/tags/Tools/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Solution of Win10 Auto Rebooting caused by usocoreworker.exe</title>
     <link href="https://allmainashley.github.io/2021/02/07/System/Solution%20of%20Win10%20Auto%20Rebooting/"/>
     <id>https://allmainashley.github.io/2021/02/07/System/Solution%20of%20Win10%20Auto%20Rebooting/</id>
@@ -541,6 +515,32 @@
     <category term="The Missing Semester of Your CS Education" scheme="https://allmainashley.github.io/tags/The-Missing-Semester-of-Your-CS-Education/"/>
     
     <category term="Shell" scheme="https://allmainashley.github.io/tags/Shell/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Qv2ray 配置</title>
+    <link href="https://allmainashley.github.io/2020/09/30/Notes/Linux/Qv2ray%20Configuration/"/>
+    <id>https://allmainashley.github.io/2020/09/30/Notes/Linux/Qv2ray%20Configuration/</id>
+    <published>2020-09-29T16:15:52.963Z</published>
+    <updated>2020-09-03T05:14:16.250Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="（一）Qv2ray及v2ray的下载"><a href="#（一）Qv2ray及v2ray的下载" class="headerlink" title="（一）Qv2ray及v2ray的下载"></a>（一）Qv2ray及v2ray的下载</h2><p><img src="https://img-blog.csdnimg.cn/20200425214501515.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0ODE1NTcz,size_16,color_FFFFFF,t_70#pic_center" loading="lazy"></p><p><img src="https://img-blog.csdnimg.cn/20200425215012751.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0ODE1NTcz,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述" loading="lazy"></p><h2 id="（二）安装Qv2ray"><a href="#（二）安装Qv2ray" class="headerlink" title="（二）安装Qv2ray"></a>（二）安装Qv2ray</h2><p><a href="https://blog.csdn.net/yucicheung/article/details/79333056">安装Qv2ray.deb的方法</a></p><p>安装完了之后打开运行，运行方法：点击首选项<br><img src="https://img-blog.csdnimg.cn/20200425222453620.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQ0ODE1NTcz,size_16,color_FFFFFF,t_70#pic_center" loading="lazy"><br><strong>（语言选择zh-CN，上面不小心写错了）</strong><br>再点击订阅：</p><p><img src="https://img-blog.csdnimg.cn/2020042522304470.png" alt="在这里插入图片描述" loading="lazy"><br>点击左下角加号，并双击，填写订阅名称及订阅地址：<img src="https://img-blog.csdnimg.cn/20200425223405374.png#pic_center" alt="在这里插入图片描述" loading="lazy"><br>配置完成！</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;（一）Qv2ray及v2ray的下载&quot;&gt;&lt;a href=&quot;#（一）Qv2ray及v2ray的下载&quot; class=&quot;headerlink&quot; title=&quot;（一）Qv2ray及v2ray的下载&quot;&gt;&lt;/a&gt;（一）Qv2ray及v2ray的下载&lt;/h2&gt;&lt;p&gt;&lt;img s</summary>
+      
+    
+    
+    
+    <category term="Notes" scheme="https://allmainashley.github.io/categories/Notes/"/>
+    
+    <category term="Linux" scheme="https://allmainashley.github.io/categories/Notes/Linux/"/>
+    
+    
+    <category term="Qv2ray" scheme="https://allmainashley.github.io/tags/Qv2ray/"/>
     
   </entry>
   
